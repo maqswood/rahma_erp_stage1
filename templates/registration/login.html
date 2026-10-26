@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Rahma Groups ERP{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-10 col-md-6 col-lg-4">
+    <div class="card shadow-sm"><div class="card-body p-4">
+      <h1 class="h4 mb-3">Sign in</h1>
+      <p class="text-secondary">Rahma Groups multi-branch ERP</p>
+      {% if form.errors %}<div class="alert alert-danger">Username or password is incorrect.</div>{% endif %}
+      <form method="post">{% csrf_token %}
+        <div class="mb-3"><label class="form-label" for="id_username">Username</label>{{ form.username }}</div>
+        <div class="mb-3"><label class="form-label" for="id_password">Password</label>{{ form.password }}</div>
+        <button class="btn btn-primary w-100" type="submit">Sign in</button>
+      </form>
+    </div></div>
+  </div>
+</div>
+<script>
+document.querySelectorAll('input').forEach(el => el.classList.add('form-control'));
+</script>
+{% endblock %}

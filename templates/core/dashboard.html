@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · Rahma Groups ERP{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+  <div><h1 class="h3 mb-1">Operations dashboard</h1>
+  <p class="text-secondary mb-0">Stage 1 foundation · financial metrics will appear after their source modules are implemented.</p></div>
+</div>
+<div class="alert alert-info">No sample financial figures are displayed. This foundation only lists branches the signed-in user is authorized to view.</div>
+<div class="card shadow-sm">
+  <div class="card-header bg-white"><strong>Accessible branches</strong></div>
+  <div class="table-responsive"><table class="table table-hover mb-0">
+    <thead><tr><th>Code</th><th>Branch</th><th>Type</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for branch in branches %}
+      <tr><td>{{ branch.code }}</td><td>{{ branch.name }}</td><td>{{ branch.get_kind_display }}</td><td>{% if branch.is_active %}Active{% else %}Inactive{% endif %}</td></tr>
+    {% empty %}
+      <tr><td colspan="4" class="text-center text-secondary p-4">No branches assigned or configured yet. Create an organization and branches in Django Admin.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}
